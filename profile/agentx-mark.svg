@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">AgentX mark</title>
+  <desc id="desc">A cyan X inside a dark hexagonal frame.</desc>
+  <rect width="256" height="256" rx="56" fill="#0b1220"/>
+  <path d="M128 28 210 75v106l-82 47-82-47V75l82-47Z" fill="none" stroke="#38bdf8" stroke-width="14"/>
+  <path d="m88 82 40 45 40-45M88 174l40-47 40 47" fill="none" stroke="#f8fafc" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+</svg>
