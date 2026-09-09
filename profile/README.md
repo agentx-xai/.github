@@ -10,33 +10,41 @@
   <a href="https://agentx-xai.github.io/agentx-website/">Website</a> ·
   <a href="https://github.com/agentx-xai/agentx-cli">CLI</a> ·
   <a href="https://github.com/agentx-xai/agentx-server">Registry Server</a> ·
-  <a href="https://github.com/agentx-xai/agentx-website">Console</a>
+  <a href="https://github.com/agentx-xai/agentx-website/tree/main/console">Web Console</a>
 </p>
 
-AgentX keeps an AI agent environment reproducible across machines. Declare Skills, rules, MCP servers, policies, and versions once; compile them into the native configuration of each supported agent; then inspect drift and reconcile devices from a local CLI or a team Registry.
+AgentX keeps AI agent environments reproducible across machines. Declare Skills, rules, MCP servers, policies, and versions once; compile them into each supported agent's native configuration; then inspect drift and reconcile devices from a local CLI or a team Registry.
 
-### What is included
+### Repositories
 
-- **CLI**: local-first initialization, lockfiles, install plans, adapters, Registry sync, device reconciliation, drift and rollback.
-- **Registry Server**: workspace-scoped manifests, immutable artifacts, policies, approvals, audit events, devices, and OpenAPI APIs.
-- **Website and Console**: product documentation, architecture overview, and the web entry point for Registry operations.
-- **Adapters**: Codex, Claude Code, Cursor, Windsurf, Gemini CLI, GitHub Copilot, Cline, and Grok Build.
+| Repository | Responsibility |
+| --- | --- |
+| [`agentx-cli`](https://github.com/agentx-xai/agentx-cli) | Rust CLI for manifests, lockfiles, installation plans, eight agent adapters, Registry Device Flow, sync, drift, and rollback. |
+| [`agentx-server`](https://github.com/agentx-xai/agentx-server) | Go Registry/API with PostgreSQL and S3 support, OIDC/JWKS authentication, workspace RBAC, audit, invitations, lifecycle controls, and production deployment templates. |
+| [`agentx-website`](https://github.com/agentx-xai/agentx-website) | Vue product website and authenticated Registry Web Console with OIDC PKCE and workspace operations. |
 
-### Start here
+The three repositories are independently versioned and released. For full-stack staging, clone them into the same parent directory:
 
 ```bash
 git clone https://github.com/agentx-xai/agentx-cli.git
+git clone https://github.com/agentx-xai/agentx-server.git
+git clone https://github.com/agentx-xai/agentx-website.git
+```
+
+### Start with the CLI
+
+```bash
 cd agentx-cli
 cargo run -- init
 cargo run -- lock
 cargo run -- install --yes --frozen
 ```
 
-Read the [CLI README](https://github.com/agentx-xai/agentx-cli#readme) for local installation and the [product guide](https://github.com/agentx-xai/agentx-cli/blob/main/PRODUCT.md) for the full workflow. Server deployment is documented in the [Server README](https://github.com/agentx-xai/agentx-server#readme); the public product site is at [agentx-xai.github.io/agentx-website](https://agentx-xai.github.io/agentx-website/).
+Read the [CLI guide](https://github.com/agentx-xai/agentx-cli#readme), [Server operations guide](https://github.com/agentx-xai/agentx-server/blob/main/docs/OPERATIONS.md), and [Website/Console guide](https://github.com/agentx-xai/agentx-website#readme). The public product site is at [agentx-xai.github.io/agentx-website](https://agentx-xai.github.io/agentx-website/).
 
 ### Project status
 
-The repositories are public and ship tagged releases. Every pull request runs formatting, tests, static checks, and production builds. A version tag such as `v0.1.2` produces a GitHub Release with the relevant binaries or website artifact.
+The source repositories are public and their `main` branches run component-specific CI. Hosted production deployments require operator-supplied identity, storage, secrets, observability, support, and legal configuration; the Server repository includes preflight checks and deployment guidance for those inputs.
 
 ### Contributing
 
